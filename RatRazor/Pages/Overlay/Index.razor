@@ -63,29 +63,28 @@
     else
     {
         <div class="d-flex align-enter" style="position: absolute; left: @(RatScannerUI.CurrentItemScan.GetToolTipPosition().X - VirtualScreenOffset.XOffset)px; top: @(RatScannerUI.CurrentItemScan.GetToolTipPosition().Y - VirtualScreenOffset.YOffset)px; background: #121212; padding: 4px;">
-
-            @if (RatScannerUI.Avg24hPrice >= RatScannerUI.BestTraderPrice)
-            {
-                <div class="stroke">
-                    @RatScannerUI.IntToShortPrice(RatScannerUI.Avg24hPrice)
+            <div style="height:100%;width:100%;position:relative;text-shadow: 0px 0px 5px black;" class="pa-1">
+                <div class="d-flex align-center stroke">
+                    @RatScannerUI.IntToLongPrice(RatScannerUI.Avg24hPrice)
                 </div>
-            }
-            else
-            {
-                <div class="d-flex align-center">
-                    @RatScannerUI.IntToShortPrice(RatScannerUI.BestTraderPrice)
+                <div class="d-flex align-center stroke">
+                    @RatScannerUI.IntToLongPrice(RatScannerUI.BestTraderPrice)
                     <MudAvatar Image="@($"https://tarkovtracker.io/img/{@RatScannerUI.TraderName}Headshot.jpg")" Size="Size.Small" Style="float: right;" Class="ml-1" />
                 </div>
-            }
 
-            @if (RatScannerUI.TrackingNeeds.QuestRemaining > 0)
-            {
-                <MudIcon Icon="@Icons.Filled.Checklist" Size="Size.Small" Class="ml-1" />
-            }
-            @if (RatScannerUI.TrackingNeeds.HideoutRemaining > 0)
-            {
-                <MudIcon Icon="@Icons.Filled.House" Size="Size.Small" Class="ml-1" />
-            }
+                @if (RatScannerUI.TrackingNeeds.QuestRemaining > 0)
+                {
+                    <div class="d-flex align-center stroke">
+                        @RatScannerUI.TrackingNeeds.QuestRemaining <MudIcon Icon="@Icons.Filled.Checklist" Size="Size.Small" Class="ml-1" />
+                    </div>
+                }
+                @if (RatScannerUI.TrackingNeeds.HideoutRemaining > 0)
+                {
+                    <div class="d-flex align-center stroke">
+                        @RatScannerUI.TrackingNeeds.HideoutRemaining <MudIcon Icon="@Icons.Filled.House" Size="Size.Small" Class="ml-1" />
+                    </div>
+                }
+            </div>
         </div>
     }
 }
